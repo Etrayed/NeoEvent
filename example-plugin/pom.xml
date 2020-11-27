@@ -9,26 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>neoevent-plugin</artifactId>
+    <artifactId>example-plugin</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>dev.etrayed.neoevent</groupId>
-            <artifactId>neoevent-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>plugin-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dev.etrayed.neoevent</groupId>
+            <artifactId>neoevent-api</artifactId>
+            <version>DEV-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
