@@ -17,7 +17,7 @@ import java.util.Arrays;
 /**
  * @author Etrayed
  */
-@Plugin(name = "NeoEvent", version = "DEV")
+@Plugin(name = "NeoEvent", version = "1.0.0")
 @Author("Etrayed")
 public class NeoEventPlugin extends JavaPlugin implements NeoEventProvider {
 
