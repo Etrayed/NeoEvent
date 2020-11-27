@@ -80,13 +80,23 @@ public final class DelegateEventPluginLoader implements PluginLoader {
                 return;
             }
 
+            if(method.getParameterTypes().length > 2) {
+                LOGGER.severe("Failed to create RegisteredListener for method " + method.getName() + '('
+                        + StringUtils.join(Arrays.stream(method.getParameterTypes()).map(Class::getSimpleName).toArray(), ", ")
+                        + ") in class " + method.getDeclaringClass().getCanonicalName() + ": Too many parameters (max = 2)");
+
+                return;
+            }
+
             RegisteredListener registeredListener = new RegisteredListener(listener, (unused, event) -> {
-                Object[] params = new Object[hasEventTarget ? 2 : 1];
+                Object[] params = new Object[method.getParameterTypes().length];
 
-                params[0] = event;
+                if(params.length > 0) {
+                    params[0] = event;
 
-                if(hasEventTarget) {
-                    params[1] = entry.targetExtrator().apply(event);
+                    if(hasEventTarget) {
+                        params[1] = entry.targetExtrator().apply(event);
+                    }
                 }
 
                 try {
