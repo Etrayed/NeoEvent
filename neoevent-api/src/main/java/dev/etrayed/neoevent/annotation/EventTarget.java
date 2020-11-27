@@ -3,6 +3,9 @@ package dev.etrayed.neoevent.annotation;
 import org.bukkit.Bukkit;
 import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.entity.PlayerLeashEntityEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.weather.WeatherEvent;
 import org.bukkit.event.hanging.HangingEvent;
@@ -76,7 +79,19 @@ import java.lang.annotation.Target;
  *          <tr>
  *              <td>{@link WorldEvent}</td>
  *              <td>{@link WorldEvent#getWorld()}</td>
- *          </tr>          
+ *          </tr>
+ *          <tr>
+ *              <td>{@link PlayerLeashEntityEvent}</td>
+ *              <td>{@link PlayerLeashEntityEvent#getEntity()}</td>
+ *          </tr>
+ *          <tr>
+ *              <td>{@link InventoryMoveItemEvent}</td>
+ *              <td>{@link InventoryMoveItemEvent#getInitiator()}</td>
+ *          </tr>
+ *          <tr>
+ *              <td>{@link InventoryPickupItemEvent}</td>
+ *              <td>{@link InventoryPickupItemEvent#getInventory()}</td>
+ *          </tr>
  *      </table>
  *      <br>
  *      <b>Not all supported events are listed above!</b> There are some version-specific events.
