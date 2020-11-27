@@ -17,12 +17,9 @@ import org.bukkit.plugin.java.annotation.plugin.Plugin;
 public class ExamplePlugin extends JavaPlugin {
 
     @Override
-    public void onLoad() {
-        Bukkit.getServicesManager().load(NeoEventProvider.class).applyTo(this);
-    }
-
-    @Override
     public void onEnable() {
+        Bukkit.getServicesManager().load(NeoEventProvider.class).applyTo(this);
+
         Bukkit.getPluginManager().registerEvents(new ExampleListenerSpigot(), this);
         Bukkit.getPluginManager().registerEvents(new ExampleListenerNeoEvent(), this);
     }

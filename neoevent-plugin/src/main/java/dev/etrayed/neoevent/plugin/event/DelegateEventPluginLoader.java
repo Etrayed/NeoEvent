@@ -13,8 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -23,7 +21,7 @@ import java.util.regex.Pattern;
  */
 public final class DelegateEventPluginLoader implements PluginLoader {
 
-    private static final Logger LOGGER = LogManager.getLogManager().getLogger("NeoEvent-EventLoader");
+    private static final Logger LOGGER = Logger.getLogger("NeoEvent-EventLoader");
 
     private final PluginLoader delegate;
 
@@ -144,22 +142,22 @@ public final class DelegateEventPluginLoader implements PluginLoader {
         ListMultimap<Method, Class<? extends Event>> eventsByMethod = ArrayListMultimap.create();
 
         for (Method method : listener.getClass().getDeclaredMethods()) {
-            try {
-                events.clear();
+            events.clear();
 
-                if(method.getAnnotation(MonoEventAction.class) != null) {
-                    events.add(method.getAnnotation(MonoEventAction.class).value());
-                } else if(method.getAnnotation(MonoEventActionSafe.class) != null) {
+            if(method.getAnnotation(MonoEventAction.class) != null) {
+                events.add(method.getAnnotation(MonoEventAction.class).value());
+            } else if(method.getAnnotation(MonoEventActionSafe.class) != null) {
+                try {
                     events.add((Class<? extends Event>) Class.forName(method.getAnnotation(MonoEventActionSafe.class).value()));
-                } else if(method.getAnnotation(PolyEventAction.class) != null) {
-                    events.addAll(Arrays.asList(method.getAnnotation(PolyEventAction.class).value()));
+                } catch (ClassNotFoundException e) {
+                    continue;
                 }
+            } else if(method.getAnnotation(PolyEventAction.class) != null) {
+                events.addAll(Arrays.asList(method.getAnnotation(PolyEventAction.class).value()));
+            }
 
-                if(!events.isEmpty()) {
-                    eventsByMethod.putAll(method, events);
-                }
-            } catch (ClassNotFoundException e) {
-                LOGGER.log(Level.SEVERE, "Failed to register event action " + method.getName(), e);
+            if(!events.isEmpty()) {
+                eventsByMethod.putAll(method, events);
             }
         }
 
