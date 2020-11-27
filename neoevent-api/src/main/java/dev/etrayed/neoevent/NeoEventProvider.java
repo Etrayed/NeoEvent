@@ -36,7 +36,7 @@ public interface NeoEventProvider {
 
     /**
      * Returns an instance of the {@code EventLoader}, which is
-     * a {@link org.bukkit.plugin.java.JavaPluginLoader JavaPluginLoader}-delegate with a modified
+     * a {@link org.bukkit.plugin.PluginLoader PluginLoader}-delegate with a modified
      * {@link PluginLoader#createRegisteredListeners(Listener, Plugin)} method.
      *
      * @return The {@code EventLoader}'s instance

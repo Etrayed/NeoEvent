@@ -2,9 +2,11 @@ package dev.etrayed.neoevent.plugin;
 
 import com.google.common.base.Preconditions;
 import dev.etrayed.neoevent.NeoEventProvider;
-import dev.etrayed.neoevent.plugin.loader.DelegateEventPluginLoader;
+import dev.etrayed.neoevent.plugin.event.DelegateEventPluginLoader;
 import dev.etrayed.neoevent.plugin.util.LoaderFieldSupplier;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
@@ -23,6 +25,8 @@ public class NeoEventPlugin extends JavaPlugin implements NeoEventProvider {
     @Override
     public void onEnable() {
         this.eventLoader = new DelegateEventPluginLoader(this.getPluginLoader());
+
+        Bukkit.getServicesManager().register(NeoEventProvider.class, this, this, ServicePriority.Highest);
     }
 
     @Override
