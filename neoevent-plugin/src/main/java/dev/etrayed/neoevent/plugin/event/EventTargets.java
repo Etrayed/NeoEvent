@@ -80,7 +80,7 @@ final class EventTargets {
         putEventTargetIfPresent(map, "org.bukkit.event.painting.PaintingEvent", Painting.class, reflectiveMethodInvocationFunction("getPainting"));
         putEventTargetIfPresent(map, "org.bukkit.event.server.TabCompleteEvent", CommandSender.class, reflectiveMethodInvocationFunction("getSender"));
 
-        return null;
+        return map;
     }
 
     @SuppressWarnings("unchecked")

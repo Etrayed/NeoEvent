@@ -7,10 +7,11 @@
     <groupId>dev.etrayed.neoevent</groupId>
     <artifactId>neoevent-parent</artifactId>
     <packaging>pom</packaging>
-    <version>DEV-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>neoevent-api</module>
         <module>neoevent-plugin</module>
+        <module>example-plugin</module>
     </modules>
 
     <properties>
@@ -39,6 +40,18 @@
                 <artifactId>annotations</artifactId>
                 <version>19.0.0</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.spigotmc</groupId>
+                <artifactId>plugin-annotations</artifactId>
+                <version>1.2.3-SNAPSHOT</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bukkit</groupId>
+                        <artifactId>bukkit</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
