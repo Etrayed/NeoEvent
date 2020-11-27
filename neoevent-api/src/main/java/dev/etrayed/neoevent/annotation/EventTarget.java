@@ -21,7 +21,7 @@ import java.lang.annotation.Target;
 
 /**
  * This annotation is used to annotate a parameter of an EventAction,
- * indicating that it should supplied with the {@link org.bukkit.event.Event}'s target.
+ * indicating that it should supplied with the {@link org.bukkit.event.Event Event}'s target.
  *
  * <blockquote>
  *     <table cellpadding=7 summary="Shows all possible event targets">
@@ -78,6 +78,8 @@ import java.lang.annotation.Target;
  *              <td>{@link WorldEvent#getWorld()}</td>
  *          </tr>          
  *      </table>
+ *      <br>
+ *      <b>Not all supported events are listed above!</b> There are some version-specific events.
  * </blockquote>
  *
  * @author Etrayed
